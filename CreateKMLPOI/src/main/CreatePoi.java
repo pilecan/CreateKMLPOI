@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import build.BuildPlacemark;
+import build.BuildCVS;
 import model.Poi;
 
 public class CreatePoi {
@@ -15,12 +15,14 @@ public class CreatePoi {
 	private static String source;
 	private static String filename;
 	private static String kmlfile;
+	private static String cvsfile;
 
 	public static void main(String[] args) {
 
-		source = "g:\\addons\\work\\World Update XVIII\\";
-		kmlfile = "g:\\addons\\work\\World Update XVIII\\pois_update_xviii.kml";
-		filename = "pois.txt";
+		source = "g:\\addons\\work\\japan_update-2\\";
+		kmlfile = source+"japan_POIs_update 20.kml";
+		cvsfile = source+"japan_POIs_update 20.cvs";
+		filename = "japan_POIs_update 20.txt";
 		
 		pois = readFile(source , filename);
 		
@@ -28,8 +30,9 @@ public class CreatePoi {
 		
 		System.out.println("size : "+pois.size());
 		
-		BuildPlacemark.createKML(pois, "MSFS World Update XVIII",kmlfile);
-
+	//	BuildPlacemark.createKML(pois, "MSFS World Update XVIII",kmlfile);
+		
+		BuildCVS.createCVS(pois, "MSFS Update 20", "Japan", cvsfile);
 	}
 	
 	 static public ArrayList <Poi>  readFile(String source , String filename) {
